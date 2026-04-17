@@ -1,0 +1,120 @@
+/* To make color changes, change the variables in both the userChrome AND userContent files */
+:root{
+	/* NORMAL BROWSING COLORS */
+		--95grey:#c9c9c9;
+		--home-bground:#E5E5E5;
+		--3d-darkest:#0a0a0a;
+		--3d-dark:#808080;
+		--3d-light:#dfdfdf;
+		--3d-lightest:#ffffff;
+		--urlbar-bg:#ffffff;
+		--button-colour:#0a0a0a;
+		
+	/* Defines the 3d effect in normal browsing. */
+		--95convex:inset -1px -1px var(--3d-darkest),inset 1px 1px var(--3d-lightest),inset -2px -2px var(--3d-dark),inset 2px 2px var(--3d-light);
+		--95concave:inset -1px -1px var(--3d-lightest),inset 1px 1px var(--3d-dark),inset -2px -2px var(--3d-light),inset 2px 2px var(--3d-darkest);
+	}
+	
+	/* ========================================
+	   NEW TAB PAGE STYLING - ALL CODE BELOW IS NEW
+	   ======================================== */
+	@-moz-document url("about:home"), url("about:newtab"), url("about:blank") {
+		
+		body {
+			background-color: var(--home-bground) !important;
+		}
+		
+		/* Search box styling */
+		.search-wrapper input {
+			background-color: var(--urlbar-bg) !important;
+			border: none !important;
+			border-radius: 0px !important;
+			box-shadow: var(--95concave) !important;
+			color: var(--button-colour) !important;
+			font-family: "MS Sans Serif", sans-serif !important;
+		}
+		
+		.search-wrapper {
+			background-color: transparent !important;
+		}
+		
+		.search-handoff-button {
+			background-color: var(--urlbar-bg) !important;
+			border: none !important;
+			border-radius: 0px !important;
+			box-shadow: var(--95concave) !important;
+		}
+		
+		/* Top Sites / Shortcuts */
+		.top-sites-list .top-site-outer .top-site-inner {
+			background-color: var(--95grey) !important;
+			border-radius: 0px !important;
+			box-shadow: var(--95convex) !important;
+		}
+		
+		.top-site-outer .tile {
+			background-color: var(--95grey) !important;
+			border-radius: 0px !important;
+			box-shadow: var(--95convex) !important;
+		}
+		
+		.top-site-outer:hover .tile {
+			box-shadow: var(--95concave) !important;
+		}
+		
+		/* Cards/Articles */
+		.card-outer {
+			background-color: var(--95grey) !important;
+			border-radius: 0px !important;
+			box-shadow: var(--95convex) !important;
+		}
+		
+		.card-outer:hover {
+			box-shadow: var(--95concave) !important;
+		}
+		
+		/* Section titles */
+		.section-title {
+			color: var(--button-colour) !important;
+			font-family: "MS Sans Serif", sans-serif !important;
+		}
+		
+		/* Context menu */
+		.context-menu {
+			background-color: var(--95grey) !important;
+			border-radius: 0px !important;
+			box-shadow: var(--95convex) !important;
+		}
+		
+		.context-menu-item:hover {
+			background-color: #000080 !important;
+			color: white !important;
+		}
+		
+		/* Edit buttons */
+		.edit-topsites-button,
+		.context-menu-button {
+			background-color: var(--95grey) !important;
+			border-radius: 0px !important;
+			box-shadow: var(--95convex) !important;
+		}
+		
+		.edit-topsites-button:hover,
+		.context-menu-button:hover {
+			box-shadow: var(--95concave) !important;
+		}
+		
+		/* Pocket/Sponsored labels */
+		.card-text {
+			color: var(--button-colour) !important;
+			font-family: "MS Sans Serif", sans-serif !important;
+		}
+		
+		/* Weather widget if visible */
+		.weather-widget {
+			background-color: var(--95grey) !important;
+			border-radius: 0px !important;
+			box-shadow: var(--95convex) !important;
+		}
+}
+	
