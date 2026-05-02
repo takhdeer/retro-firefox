@@ -117,3 +117,17 @@
     color: #000000 !important;
 }
 
+/* Firefox logo text */
+.logo-text,
+.wordmark,
+[class*="logo"] span {
+  color: #000000 !important;
+}
+
+/* Weather widget text */
+.weather-temp,
+.weather-location,
+.weather-description,
+[class*="weather"] {
+  color: #000000 !important;
+}
