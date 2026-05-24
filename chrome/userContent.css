@@ -24,6 +24,10 @@
 			background-color: var(--home-bground) !important;
 		}
 		
+		.logo-and-wordmark .wordmark {
+			fill: #1A1110 !important;
+		}
+		
 		/* Search box styling */
 		.search-wrapper input {
 			background-color: var(--urlbar-bg) !important;
@@ -32,6 +36,7 @@
 			box-shadow: var(--95concave) !important;
 			color: var(--button-colour) !important;
 			font-family: "MS Sans Serif", sans-serif !important;
+			opacity: 1 !important;
 		}
 		
 		.search-wrapper {
@@ -40,28 +45,70 @@
 		
 		.search-handoff-button {
 			background-color: var(--urlbar-bg) !important;
+			color: var(--button-colour) !important;
 			border: none !important;
 			border-radius: 0px !important;
 			box-shadow: var(--95concave) !important;
+			opacity: 1 !important;
 		}
 		
 		/* Top Sites / Shortcuts */
+		.top-site-outer {
+			margin: 0 6px !important;
+			width: 100px !important;
+		}
+
 		.top-sites-list .top-site-outer .top-site-inner {
-			background-color: var(--95grey) !important;
+			background-color: transparent !important;
 			border-radius: 0px !important;
-			box-shadow: var(--95convex) !important;
+			box-shadow: none !important;
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
 		}
 		
 		.top-site-outer .tile {
 			background-color: var(--95grey) !important;
 			border-radius: 0px !important;
 			box-shadow: var(--95convex) !important;
+			width: 100px !important;
+			height: 100px !important;
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: center !important;
+			border: none !important;
 		}
+
+		.top-site-inner > a {
+			width: 120px !important;
+			height: 120px !important;
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: center !important;
+		}
+		
 		
 		.top-site-outer:hover .tile {
 			box-shadow: var(--95concave) !important;
 		}
+
+		.tile {
+			width: 100px !important;
+			height: 100px !important;
+			border-radius: 4px !important;
+			border: 1px solid #ccc !important;
+			box-shadow: none !important;
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+		}
 		
+		.top-site-icon {
+			margin: 0 auto !important;
+		}
+
 		/* Cards/Articles */
 		.card-outer {
 			background-color: var(--95grey) !important;
@@ -75,8 +122,11 @@
 		
 		/* Section titles */
 		.section-title {
-			color: var(--button-colour) !important;
-			font-family: "MS Sans Serif", sans-serif !important;
+			display: none !important;
+		}
+
+		.title {
+			display: none !important;
 		}
 		
 		/* Context menu */

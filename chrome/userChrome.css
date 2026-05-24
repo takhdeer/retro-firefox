@@ -98,8 +98,9 @@
 }
 
 .autoscroller {
-  background-image: size_all.png !important;
+  background-image: url(size_all.png) !important;
 }
+
 #urlbar-searchmode-switcher {
 	background-color: transparent !important;
 }
