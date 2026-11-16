@@ -57,6 +57,137 @@
 }
 
 
+/* ---------- Vertical tabs / sidebar ---------- */
+/* The strip that holds vertical tabs and the sidebar buttons: grey with dark
+   text and icons, and a raised edge against the page */
+#sidebar-container{
+	background-color: var(--95grey) !important;
+	background-image: none !important;
+	color: var(--button-colour) !important;
+	box-shadow: var(--95convex) !important;
+	padding: 2px !important;
+	--toolbar-color: var(--button-colour) !important;
+	--toolbarbutton-icon-fill: var(--button-colour) !important;
+	--sidebar-divider-color: var(--3d-dark) !important;
+	--tab-vertical-scrollbar-color: var(--3d-dark) var(--95grey) !important;
+	--tab-border-radius: 0px !important;
+	--tab-background-color-hover: var(--3d-light) !important;
+
+	/* Sidebar buttons at the bottom (history, synced tabs, settings...):
+	   flat until hovered, raised on hover, pressed while clicked or open */
+	--button-border-radius: 0px !important;
+	--button-icon-fill: var(--button-colour) !important;
+	--button-text-color: var(--button-colour) !important;
+	--button-text-color-hover: var(--button-colour) !important;
+	--button-text-color-active: var(--button-colour) !important;
+	--button-text-color-selected: var(--button-colour) !important;
+	--button-text-color-ghost: var(--button-colour) !important;
+	--button-text-color-ghost-hover: var(--button-colour) !important;
+	--button-text-color-ghost-active: var(--button-colour) !important;
+	--button-text-color-ghost-selected: var(--button-colour) !important;
+	--button-background-color: var(--95grey) !important;
+	--button-background-color-hover: var(--95grey) !important;
+	--button-background-color-active: var(--95grey) !important;
+	--button-background-color-selected: var(--3d-light) !important;
+	--button-background-color-ghost: transparent !important;
+	--button-background-color-ghost-hover: var(--95grey) !important;
+	--button-background-color-ghost-active: var(--95grey) !important;
+	--button-background-color-ghost-selected: var(--3d-light) !important;
+	--95raised-edge: var(--3d-lightest) var(--3d-darkest) var(--3d-darkest) var(--3d-lightest);
+	--95pressed-edge: var(--3d-darkest) var(--3d-lightest) var(--3d-lightest) var(--3d-darkest);
+	--button-border-color: transparent !important;
+	--button-border-color-hover: var(--95raised-edge) !important;
+	--button-border-color-active: var(--95pressed-edge) !important;
+	--button-border-color-selected: var(--95pressed-edge) !important;
+	--button-border-color-ghost: transparent !important;
+	--button-border-color-ghost-hover: var(--95raised-edge) !important;
+	--button-border-color-ghost-active: var(--95pressed-edge) !important;
+	--button-border-color-ghost-selected: var(--95pressed-edge) !important;
+}
+
+/* Vertical tabs: every tab is a raised button, the current one looks pressed in */
+#tabbrowser-tabs[orient="vertical"] .tab-background{
+	background-color: var(--95grey) !important;
+	background-image: none !important;
+	border: none !important;
+	outline: none !important;
+	box-shadow: var(--95convex) !important;
+}
+#tabbrowser-tabs[orient="vertical"] .tab-background:is([selected], [multiselected]){
+	background-color: var(--3d-light) !important;
+	box-shadow: var(--95concave) !important;
+}
+#tabbrowser-tabs[orient="vertical"] .tab-content[selected] .tab-label{
+	font-weight: bold !important;
+}
+#tabbrowser-tabs[orient="vertical"] :is(.tab-content, .tab-label, .tab-close-button){
+	color: var(--button-colour) !important;
+	fill: var(--button-colour) !important;
+}
+#tabbrowser-tabs[orient="vertical"] .tab-close-button{
+	border-radius: 0 !important;
+}
+
+/* "New tab" button under the vertical tabs */
+#vertical-tabs-newtab-button,
+#tabbrowser-arrowscrollbox[orient="vertical"] #tabs-newtab-button{
+	border-radius: 0 !important;
+	color: var(--button-colour) !important;
+	fill: var(--button-colour) !important;
+}
+:is(#vertical-tabs-newtab-button, #tabbrowser-arrowscrollbox[orient="vertical"] #tabs-newtab-button):hover{
+	background-color: var(--95grey) !important;
+	box-shadow: var(--95convex) !important;
+}
+:is(#vertical-tabs-newtab-button, #tabbrowser-arrowscrollbox[orient="vertical"] #tabs-newtab-button):hover:active{
+	box-shadow: var(--95concave) !important;
+}
+
+/* Sidebar panel that opens beside the strip (history, bookmarks...): grey
+   title bar, square corners, Win95 edges */
+#sidebar-box{
+	background-color: var(--95grey) !important;
+	color: var(--button-colour) !important;
+	border: none !important;
+	border-radius: 0 !important;
+	box-shadow: var(--95convex) !important;
+	padding: 2px !important;
+	--sidebar-border-color: var(--3d-dark) !important;
+	--sidebar-box-start-start-radius: 0px !important;
+	--sidebar-box-start-end-radius: 0px !important;
+}
+#sidebar-header,
+#sidebar-panel-header{
+	background-color: var(--95grey) !important;
+	color: var(--button-colour) !important;
+}
+#sidebar-box,
+#sidebar{
+	color-scheme: light !important;
+	--sidebar-background-color: var(--95grey) !important;
+	--sidebar-text-color: var(--button-colour) !important;
+}
+#sidebar{
+	background-color: var(--95grey) !important;
+	color: var(--button-colour) !important;
+	border-radius: 0 !important;
+	outline: none !important;
+}
+
+/* The window backdrop that shows around the sidebar and behind the page corners */
+#main-window > body{
+	background-color: var(--95grey) !important;
+}
+.browserContainer{
+	border-radius: 0 !important;
+}
+.sidebar-splitter{
+	background-color: var(--95grey) !important;
+	border-color: var(--3d-dark) !important;
+	border-radius: 0 !important;
+}
+
+
 /* ---------- Toolbars ---------- */
 #nav-bar:not([tabs-hidden="true"]) {
 	box-shadow: 0px -1px 0px 0px var(--3d-dark) !important;
@@ -411,4 +542,26 @@ menupopup menuseparator{
 }
 #PersonalToolbar .bookmark-item[open]{
 	box-shadow: var(--95concave) !important;
+}
+
+
+/* ---------- Sidebar panel contents (history, synced tabs, bookmarks...) ---------- */
+/* These panels are separate pages inside the sidebar; force the light grey look
+   so dark mode doesn't leave white text on a dark list */
+@-moz-document url-prefix("chrome://browser/content/sidebar/"), url-prefix("chrome://browser/content/places/"), url-prefix("chrome://browser/content/genai/"){
+	:root{
+		color-scheme: light !important;
+		background-color: var(--95grey) !important;
+		color: var(--button-colour) !important;
+		--sidebar-background-color: var(--95grey) !important;
+		--sidebar-text-color: var(--button-colour) !important;
+		--border-radius-small: 0px !important;
+		--border-radius-medium: 0px !important;
+		--border-radius-large: 0px !important;
+		--border-radius-circle: 0px !important;
+		--button-border-radius: 0px !important;
+		--input-border-radius: 0px !important;
+		--focus-outline-color: #000080 !important;
+		--link-color: #000080 !important;
+	}
 }
