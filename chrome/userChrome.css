@@ -10,11 +10,6 @@
 	--3d-lightest:#ffffff;
 	--urlbar-bg:#ffffff;
 	--button-colour:#0a0a0a;
-	
-/* Defines the 3d effect in normal browsing. */
-	--95convex:inset -1px -1px var(--3d-darkest),inset 1px 1px var(--3d-lightest),inset -2px -2px var(--3d-dark),inset 2px 2px var(--3d-light);
-	--95concave:inset -1px -1px var(--3d-lightest),inset 1px 1px var(--3d-dark),inset -2px -2px var(--3d-light),inset 2px 2px var(--3d-darkest);
-
 
 /* PRIVATE BROWSING COLORS */
 	--pb95grey:#c9c9c9;
@@ -26,109 +21,394 @@
 	--pb-urlbar-bg:#ffffff;
 	--pb-button-colour:#000000;
 
-/* Defines the 3d effect in private browsing. */
-	--pb-95convex:inset -1px -1px var(--pb-3d-darkest),inset 1px 1px var(--pb-3d-lightest),inset -2px -2px var(--pb-3d-dark),inset 2px 2px var(--pb-3d-light);
-	--pb-95concave:inset -1px -1px var(--pb-3d-lightest),inset 1px 1px var(--pb-3d-dark),inset -2px -2px var(--pb-3d-light),inset 2px 2px var(--pb-3d-darkest);
+/* Defines the 3d effect (uses whichever color set is active). */
+	--95convex:inset -1px -1px var(--3d-darkest),inset 1px 1px var(--3d-lightest),inset -2px -2px var(--3d-dark),inset 2px 2px var(--3d-light);
+	--95concave:inset -1px -1px var(--3d-lightest),inset 1px 1px var(--3d-dark),inset -2px -2px var(--3d-light),inset 2px 2px var(--3d-darkest);
+}
+
+/* Private browsing windows swap in the private colors */
+:root[privatebrowsingmode="temporary"]{
+	--95grey:var(--pb95grey);
+	--home-bground:var(--pb-home-bground);
+	--3d-darkest:var(--pb-3d-darkest);
+	--3d-dark:var(--pb-3d-dark);
+	--3d-light:var(--pb-3d-light);
+	--3d-lightest:var(--pb-3d-lightest);
+	--urlbar-bg:var(--pb-urlbar-bg);
+	--button-colour:var(--pb-button-colour);
 }
 
 
+/* ---------- Tabs ---------- */
 .tabbrowser-tab[label^="New Tab"] .tab-icon-image {
-      content: url("ff-std-alt.svg") !important;
+	content: url("ff-std-alt.svg") !important;
 }
 
-#nav-bar:not([tabs-hidden="true"]) {
-    box-shadow: 0px -1px 0px 0px grey !important;
-}
-.browser-toolbar{
-    background-color: var(--95grey) !important;
+.tab-background{
+	border-radius: 0 !important;
 }
 .tab-background[selected]{
- 	box-shadow: var(--95convex)  !important;
-	border-radius:0 !important;
-    background-color: var(--95grey) !important;
-    background-image: none !important;
-}
-.tab-background{
-    border-radius: 0px !important;
+	box-shadow: var(--95convex) !important;
+	background-color: var(--95grey) !important;
+	background-image: none !important;
 }
 .tab-content{
-    color: var(--button-colour) !important;
+	color: var(--button-colour) !important;
 }
 
-#TabsToolbar .tabs-newtab-button:hover {
-    border-radius:0 !important;
+
+/* ---------- Toolbars ---------- */
+#nav-bar:not([tabs-hidden="true"]) {
+	box-shadow: 0px -1px 0px 0px var(--3d-dark) !important;
 }
-.tabs-newtab-button:hover .toolbarbutton-icon {
-   border-radius:0 !important;
+.browser-toolbar,
+.toolbar-items{
+	background-color: var(--95grey) !important;
 }
-#urlbar-background, #urlbar, .urlbar-background{
-	background-color:var(--urlbar-bg) !important;
-    outline: none !important;
-    border:none !important;
-    border-radius: 0px !important;
-    box-shadow: var(--95concave) !important;
-}
-#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background, #searchbar:focus-within{
-    border:1px solid #000080 !important;
+
+/* Square off every toolbar button, including hover states */
+.toolbarbutton-1,
+.toolbarbutton-icon,
+.toolbarbutton-1 > .toolbarbutton-text,
+.toolbarbutton-1 > .toolbarbutton-badge-stack,
+#TabsToolbar .tabs-newtab-button{
+	border-radius: 0 !important;
 }
 .toolbarbutton-1{
-    border-radius: 0px !important;
-    color: #0a0a0a !important;
-    fill: var(--button-colour) !important;
-}
-.toolbarbutton-icon{
-    border-radius: 0px !important;
-}
-.toolbarbutton-1 > .toolbarbutton-icon, toolbar .toolbarbutton-1 > .toolbarbutton-text, toolbar .toolbarbutton-1 > .toolbarbutton-badge-stack{
-    border-radius: 0px !important; 
-}
-.toolbarbutton-1:hover{
-    border-radius: 0px !important;
-}
-.toolbar-items{
-    background-color: var(--95grey) !important;
-}
-.PanelUI-subView{
-    background-color: var(--95grey) !important;
-    box-shadow: var(--95convex) !important;
-   /* color: black; */
-}
-.cui-widget-panel, .panel-no-padding{
-    --panel-border-radius: 0px !important;
+	color: var(--button-colour) !important;
+	fill: var(--button-colour) !important;
 }
 
-.autoscroller {
-  background-image: url(size_all.png) !important;
+/* Force dark icons/text on all toolbars, even when Firefox is in dark mode */
+#navigator-toolbox{
+	--toolbar-color: var(--button-colour) !important;
+	--toolbarbutton-icon-fill: var(--button-colour) !important;
+	--toolbar-field-color: var(--button-colour) !important;
+	--toolbar-field-focus-color: var(--button-colour) !important;
 }
 
+/* Bookmarks bar: grey background, black text and icons */
+#PersonalToolbar{
+	background-color: var(--95grey) !important;
+	color: var(--button-colour) !important;
+}
+#PersonalToolbar .bookmark-item,
+#PersonalToolbar .bookmark-item .toolbarbutton-text,
+#PersonalToolbar .bookmark-item .toolbarbutton-icon{
+	color: var(--button-colour) !important;
+	fill: var(--button-colour) !important;
+}
+
+
+/* ---------- URL bar / search bar ---------- */
+#urlbar-background,
+.urlbar-background{
+	background-color: var(--urlbar-bg) !important;
+	outline: none !important;
+	border: none !important;
+	border-radius: 0 !important;
+	box-shadow: var(--95concave) !important;
+}
+#urlbar[focused="true"]:not([suppress-focus-border]) > #urlbar-background,
+#urlbar[focused="true"]:not([suppress-focus-border]) > .urlbar-background,
+#searchbar:focus-within{
+	border: 1px solid #000080 !important;
+}
 #urlbar-searchmode-switcher {
 	background-color: transparent !important;
 }
 
-/* Text color matching Sign in button */
+/* Firefox's own address bar colors, so dark mode / accent colors don't leak in */
+:root{
+	--toolbar-field-background-color: var(--urlbar-bg) !important;
+	--toolbar-field-background-color-focus: var(--urlbar-bg) !important;
+	--toolbar-field-border-color-focus: #000080 !important;
+	--focus-outline-color: #000080 !important;
+	--urlbar-border-radius: 0px !important;
+	--urlbarview-border-radius: 0px !important;
+	--urlbarview-row-border-radius: 0px !important;
+	--urlbarview-background-color-hover: var(--3d-light) !important;
+	--urlbarview-background-color-selected: #000080 !important;
+	--urlbarview-text-color-selected: #ffffff !important;
+	--urlbarview-text-color-action: #000080 !important;
+	--urlbarview-text-color-secondary: #404040 !important;
+	--urlbarview-separator-color: var(--3d-dark) !important;
+}
+.urlbar, #searchbar, .urlbarView{
+	color: var(--button-colour) !important;
+	--link-color: #000080 !important;
+	--text-color-deemphasized: #404040 !important;
+	--urlbar-box-text-color: var(--button-colour) !important;
+	--urlbar-box-background-color: var(--95grey) !important;
+	--urlbar-box-background-color-hover: var(--95grey) !important;
+	--urlbar-box-background-color-active: var(--95grey) !important;
+	--urlbar-box-background-color-focus: var(--95grey) !important;
+}
+
+/* No colored focus ring around the address bar (focus = navy border above) */
+.urlbar-input-container{
+	outline: none !important;
+}
+
+/* Search engine button (logo + down arrow): a small raised Win95 button */
+.searchmode-switcher{
+	color: var(--button-colour) !important;
+	fill: var(--button-colour) !important;
+	--button-text-color-muted: var(--button-colour) !important;
+	--button-text-color-muted-hover: var(--button-colour) !important;
+	--button-text-color-muted-active: var(--button-colour) !important;
+	--button-text-color-muted-selected: var(--button-colour) !important;
+	--button-border-radius: 0px !important;
+	margin-inline: 3px !important;
+}
+.searchmode-switcher::part(button){
+	background-color: var(--95grey) !important;
+	background-image: none !important;
+	border-radius: 0 !important;
+	box-shadow: var(--95convex) !important;
+	color: var(--button-colour) !important;
+}
+.searchmode-switcher:active::part(button),
+.searchmode-switcher[open]::part(button){
+	box-shadow: var(--95concave) !important;
+}
+.searchmode-switcher-icon,
+.searchmode-switcher-dropmarker{
+	opacity: 1 !important;
+	fill: var(--button-colour) !important;
+	fill-opacity: 1 !important;
+	color: var(--button-colour) !important;
+}
+
+/* Address bar dropdown: grey panel with a black border on every side, square corners */
+.urlbarView-background{
+	background-color: var(--95grey) !important;
+	border: 1px solid var(--3d-darkest) !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+}
+.urlbarView,
+.urlbarView-row,
+.urlbarView-title{
+	color: var(--button-colour) !important;
+}
+.urlbarView-row,
+.urlbarView-row-inner{
+	border-radius: 0 !important;
+}
+
+/* Black line under each result, running the full width of the dropdown */
+.urlbarView-row:not(:last-child){
+	border-bottom: 1px solid var(--3d-darkest) !important;
+}
+/* Widen the result list to the dropdown's edges so the lines reach both sides;
+   the extra row padding keeps icons and text where they were */
+.urlbarView{
+	margin-inline: calc(var(--urlbarview-margin-inline) - 5px) !important;
+}
+.urlbarView-background{
+	inset-inline: 0 !important;
+}
+.urlbarView-row{
+	padding-inline: calc(var(--urlbarview-row-gutter) + 5px) !important;
+}
+
+/* Group headings ("Trending on Google", "Recent Searches") */
+.urlbarView-row[label]::before{
+	color: var(--button-colour) !important;
+	opacity: 1 !important;
+	font-weight: bold !important;
+}
+
+/* Web addresses and small grey description lines */
+.urlbarView-row:not([selected]) .urlbarView-url{
+	color: #000080 !important;
+}
+.urlbarView-row:not([selected]) :is(.urlbarView-row-body-description, .urlbarView-row-body-bottom, .urlbarView-subtitle, .urlbarView-description, .urlbarView-action){
+	color: #404040 !important;
+	opacity: 1 !important;
+}
+
+/* Selected result: navy bar with white text */
+.urlbarView-row[selected],
+.urlbarView-row[selected] :is(.urlbarView-title, .urlbarView-url, .urlbarView-action, .urlbarView-subtitle, .urlbarView-description){
+	color: #ffffff !important;
+}
+.urlbarView-row:not([selected]) :is(.urlbarView-type-icon, .urlbarView-favicon){
+	fill: var(--button-colour) !important;
+}
 #urlbar-input,
-.searchbar-textbox,
-#urlbar .urlbar-input-box,
-.urlbar-input-box {
-    color: #000000 !important;
+.urlbar-input-box,
+.searchbar-textbox {
+	color: var(--button-colour) !important;
 }
 
-/* Bookmark bar text */
-.bookmark-item .toolbarbutton-text {
-    color: #000000 !important;
+
+/* ---------- Menus / panels ---------- */
+/* Dark mode makes panel and menu text white; force black text on grey */
+:root, panel, menupopup{
+	--arrowpanel-background: var(--95grey) !important;
+	--arrowpanel-color: var(--button-colour) !important;
+	--panel-background: var(--95grey) !important;
+	--panel-color: var(--button-colour) !important;
+	--menu-background-color: var(--95grey) !important;
+	--menu-color: var(--button-colour) !important;
+	--menu-disabled-color: var(--3d-dark) !important;
+	--panel-disabled-color: var(--3d-dark) !important;
+}
+panel, menupopup,
+.subviewbutton, .subviewbutton label,
+.panel-header, .panel-subview-footer-button,
+#appMenu-zoom-controls, .toolbaritem-combined-buttons{
+	color: var(--button-colour) !important;
+	fill: var(--button-colour) !important;
+}
+.subviewbutton[disabled], .subviewbutton[disabled] label,
+menuitem[disabled], menu[disabled]{
+	color: var(--3d-dark) !important;
+}
+.PanelUI-subView{
+	background-color: var(--95grey) !important;
+	box-shadow: var(--95convex) !important;
+}
+.cui-widget-panel, .panel-no-padding{
+	--panel-border-radius: 0px !important;
 }
 
-/* Firefox logo text */
-.logo-text,
-.wordmark,
-[class*="logo"] span {
-  color: #000000 !important;
+/* Menu rows (main menu, History/Bookmarks subviews, overflow panel):
+   same square raised hover as the bookmarks bar, pressed look on click */
+:root, panel{
+	--arrowpanel-menuitem-border-radius: 0px !important;
+}
+.subviewbutton,
+.panel-banner-item,
+.panel-subview-footer-button,
+.toolbaritem-combined-buttons > toolbarbutton,
+.widget-overflow-list .toolbarbutton-1{
+	border-radius: 0 !important;
+}
+:is(.subviewbutton, .panel-banner-item, .panel-subview-footer-button, .toolbaritem-combined-buttons > toolbarbutton, .widget-overflow-list .toolbarbutton-1):not([disabled]):is(:hover, :focus-visible, [open]){
+	background-color: var(--95grey) !important;
+	box-shadow: var(--95convex) !important;
+}
+:is(.subviewbutton, .panel-banner-item, .panel-subview-footer-button, .toolbaritem-combined-buttons > toolbarbutton, .widget-overflow-list .toolbarbutton-1):not([disabled]):is(:hover:active, [open]){
+	box-shadow: var(--95concave) !important;
 }
 
-/* Weather widget text */
-.weather-temp,
-.weather-location,
-.weather-description,
-[class*="weather"] {
-  color: #000000 !important;
+/* "Sign in" button in the main menu: raised Win95 button with black text
+   (dark mode made it white text in a purple pill) */
+#appMenu-nova-fxa-label,
+#appMenu-fxa-signed-out-sign-in-button,
+#PanelUI-fxa-menu-signed-out-card moz-button{
+	color: var(--button-colour) !important;
+	--button-text-color: var(--button-colour) !important;
+	--button-text-color-hover: var(--button-colour) !important;
+	--button-text-color-active: var(--button-colour) !important;
+	--button-background-color: var(--95grey) !important;
+	--button-background-color-hover: var(--95grey) !important;
+	--button-background-color-active: var(--95grey) !important;
+	--button-border-color: transparent !important;
+	--button-border-color-hover: transparent !important;
+	--button-border-color-active: transparent !important;
+	--button-border-radius: 0px !important;
+}
+:is(#appMenu-nova-fxa-label, #appMenu-fxa-signed-out-sign-in-button, #PanelUI-fxa-menu-signed-out-card moz-button)::part(button){
+	color: var(--button-colour) !important;
+	background-color: var(--95grey) !important;
+	border-color: transparent !important;
+	border-radius: 0 !important;
+	box-shadow: var(--95convex) !important;
+}
+:is(#appMenu-nova-fxa-label, #appMenu-fxa-signed-out-sign-in-button, #PanelUI-fxa-menu-signed-out-card moz-button):active::part(button){
+	box-shadow: var(--95concave) !important;
+}
+#appMenu-fxa-label2{
+	color: var(--button-colour) !important;
+	background-color: var(--95grey) !important;
+	border-radius: 0 !important;
+	box-shadow: var(--95convex) !important;
+}
+
+/* Pop-up lists such as the search engine picker ("Search with:"):
+   grey Win95 menu, black text, square corners, navy highlight */
+panel-list,
+.searchmode-switcher-panel{
+	--panel-list-background-color: var(--95grey) !important;
+	--panel-list-text-color: var(--button-colour) !important;
+	--panel-list-border-color: transparent !important;
+	--panel-list-border-radius: 0px !important;
+	--panel-list-box-shadow: var(--95convex) !important;
+	--panel-item-button-border-radius: 0px !important;
+	--panel-separator-color: var(--3d-dark) !important;
+	--panel-border-radius: 0px !important;
+	--text-color-deemphasized: #404040 !important;
+	--button-background-color-menu-hover: #000080 !important;
+	--button-text-color-menu-hover: #ffffff !important;
+	--button-background-color-menu-active: #000080 !important;
+	--button-text-color-menu-active: #ffffff !important;
+	--button-text-color-menu-disabled: var(--3d-dark) !important;
+	color: var(--button-colour) !important;
+}
+panel-list{
+	background-color: var(--95grey) !important;
+	border-radius: 0 !important;
+	box-shadow: var(--95convex) !important;
+}
+panel-list > *{
+	color: var(--button-colour) !important;
+	opacity: 1 !important;
+}
+panel-list > panel-item{
+	fill: currentColor !important;
+}
+panel-list > panel-item:hover{
+	color: #ffffff !important;
+}
+
+/* Drop-down menus drawn by Firefox (bookmark folders, right-click menus):
+   grey Win95 menu, black text, square corners, navy highlight */
+menupopup,
+panel:not([type="arrow"]){
+	--panel-background-color: var(--95grey) !important;
+	--panel-text-color: var(--button-colour) !important;
+	--panel-border-color: var(--3d-darkest) !important;
+	--panel-border-radius: 0px !important;
+	--menuitem-border-radius: 0px !important;
+	--menuitem-icon-fill: var(--button-colour) !important;
+	--text-color-deemphasized: #404040 !important;
+	--text-color-disabled: var(--3d-dark) !important;
+}
+menupopup::part(content){
+	background: var(--95grey) !important;
+	color: var(--button-colour) !important;
+	border: 1px solid var(--3d-darkest) !important;
+	border-radius: 0 !important;
+	box-shadow: var(--95convex) !important;
+}
+menupopup > :is(menu, menuitem){
+	color: var(--button-colour) !important;
+	border-radius: 0 !important;
+}
+menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]){
+	background-color: #000080 !important;
+	color: #ffffff !important;
+	--menuitem-icon-fill: #ffffff !important;
+}
+menupopup > :is(menu, menuitem)[disabled]{
+	color: var(--3d-dark) !important;
+}
+menupopup menuseparator{
+	border-color: var(--3d-dark) !important;
+}
+
+/* Bookmarks bar buttons (e.g. "Other Bookmarks"): square, pressed look while open */
+#PersonalToolbar .bookmark-item{
+	border-radius: 0 !important;
+}
+#PersonalToolbar .bookmark-item:is(:hover, [open]){
+	background-color: var(--95grey) !important;
+	box-shadow: var(--95convex) !important;
+}
+#PersonalToolbar .bookmark-item[open]{
+	box-shadow: var(--95concave) !important;
 }
